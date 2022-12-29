@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Cadastre uma empresa</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Inicio</title>
+        <!-- Fonte Rawline-->
+        <link rel="stylesheet" href="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css"/>
+        <!-- Fonte Raleway-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap"/>
+        <!-- Design System de Governo-->
+
+        <!-- Style css for header and footer-->
+        <link href="/assets/css/fragments/fragments.css" rel="stylesheet" type="text/css"/>
+        <!-- Fontawesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+        <link rel="stylesheet" href="/assets/css/core.css"/>
+
+    </head>
+    <body>
+        <div th:replace="fragments/header" ></div>
+        
+        <div class=" justify-content-center" style="max-width: 500px; margin: 0 auto">  
+            <h3 class="m-1" th:if="!${param.id}">Adicione uma empresa</h3>
+
+            <form th:object="${company}" class="form " th:action="@{/company/save}" method="POST">  
+
+                <div class="col-sm-4 col-lg-12 br-input">
+                    <label for="input-medium">Nome Fantasia</label>
+                    <input id="input-medium" type="text" name="fantasy_name" class="">
+                </div>
+                <div class="col-sm-4 col-lg-12 br-input">
+                    <label for="input-medium">Razão Social</label>
+                    <input id="input-medium" type="text" name="busines_name" class="">
+                </div>
+                <div class="col-sm-4 col-lg-12 br-input">
+                    <label for="input-medium">Telefone</label>
+                    <input id="input-medium" type="text" name="phone" class="">
+                </div>
+                <div class="col-sm-4 col-lg-12 br-input">
+                    <label for="input-medium">Email</label>
+                    <input id="input-medium" type="text" name="email" class="">
+                </div>
+                <div class="col-sm-4 col-lg-12 br-input">
+                    <label for="input-medium">CNPJ</label>
+                    <input id="input-medium" type="text" name="cnpj" class="">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-1">Salvar</button>
+            </form>
+        </div>
+       
+          
+        <div th:replace="fragments/footer" ></div>
+        <script src="/assets/js/core-init.js"></script>
+    </body>

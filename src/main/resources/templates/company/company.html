@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <!-- head -->
+    <div th:replace="fragments/head" >
+        <link rel="stylesheet" href="assets/css/company/company.css" />
+    </div>
+    <body>
+        <!-- header -->
+        <div th:replace="fragments/header" ></div>
+   
+        <main class="br-table mb-5 overflow-auto" title="Tabela irregular 2">
+            <div class="">
+                <div class="top-bar">
+                    <div class="table-title text-up-03">Empresas Cadastradas</div>
+                    <div> <a href="" class="br-button primary mr-3" id="abrir">Cadastrar uma empresa</a></div>
+                    <div class="actions-trigger text-nowrap ">
+                        <button class="br-button circle" type="button" title="Ver mais opções" data-toggle="dropdown" data-target="target01-84582" aria-label="Ver mais opções" data-visible="false" aria-expanded="false" aria-controls="target01-84582"><i class="fas fa-ellipsis-v fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="br-list" id="target01-84582" aria-hidden="true" hidden="">
+                            <button class="br-item" type="button" data-density="small">Densidade alta
+                            </button><span class="br-divider"></span>
+                            <button class="br-item" type="button" data-density="medium">Densidade média
+                            </button><span class="br-divider"></span>
+                            <button class="br-item" type="button" data-density="large">Densidade baixa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive">
+                <table>
+                    <thead> 
+                        <tr>
+                            <th class="border-right text-center border-bottom" rowspan="2" scope="rowgroup">ID</th>
+                            <th class="border-right border-bottom text-center" colspan="3" scope="colgroup">Informações</th>
+                            <th class="border-bottom text-center" colspan="2" scope="colgroup">Contato</th>
+                            <th class="border-left text-center border-bottom" rowspan="2" scope="rowgroup">Editar</th>
+                        </tr>
+                        <tr>                            
+                            <th class="border-bottom " >Nome Fantasia</th>
+                            <th class="border-bottom ">Razão Social</th>
+                            <th class="border-bottom ">CNPJ</th>
+                            <th class="border-left border-bottom" >Telefone</th>
+                            <th class="border-bottom ">Email</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="company : ${company}">
+                            <td class="text-center border-right" th:text="${company.company_id}"></td>
+                            <td th:text="${company.fantasy_name}"></td>
+                            <td th:text="${company.busines_name}"></td>
+                            <td th:text="${company.cnpj}"></td>  
+                            <td class="border-left" th:text="${company.phone}"></td>
+                            <td th:text="${company.email}"></td>
+                            <td href="" class="border-left"> <a>                            
+                                    <span class="material-symbols-outlined justify-content-center d-flex">edit_square</span>
+                            </a></td>  
+                        </tr>
+                    </tbody>
+                </table>     
+            </div>                
+
+     
+        </main>
+
+        <div class="modal-container mostrar" id="modal-company" data-scrim="true">
+            <div class="br-modal">
+                <div class="br-modal-header">Modal com scrim</div>
+                    <div class="br-modal-body">
+                        <p>Exemplo utilizando o componente scrim com FOCO</p>
+                    </div>
+                     <div class="br-modal-footer justify-content-center">
+                    <button class="br-button secondary" type="button" id="scrimfechar" data-dismiss="scrimexample">Cancelar
+                    </button>
+                    <button class="br-button primary mt-3 mt-sm-0 ml-sm-3" type="button">Retornar
+                    </button>
+                </div>
+            </div>
+          </div>
+
+        <div th:replace="fragments/footer" ></div>
+        <script src="/assets/js/core-init.js"></script>
+
+        
+    </body>
+    <style>
+        
+
+        .modal-container {
+            width: 100vw;
+            height: 100vh; 
+            background: rgba(0,0,0,.5);
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-container .mostrar{
+            display: flex;
+        }
+    </style> 
+
+<script>
+    /*Funcao para exibir ou fechar o modal*/
+    function inicialModal(modalID){
+
+        const modal = document.getElementById(modalID);
+        modal.classList.add('mostrar');
+
+        modal.addEventListener('click',  (e) =>{
+            if(e.target.id == modalID || e.target.className == 'fechar')
+            {
+                modal.classList.remove('mostrar');
+            }
+        });
+    }
+    /*gatilho para o*/
+    const abrir = document.querySelector("#")
+    logo.addEventListener('click', () =>  inicialModal('abrir-modal'));
+
+
+</script>
+</html>
